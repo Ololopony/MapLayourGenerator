@@ -6,7 +6,6 @@ public class LayoutFiller
     private Dictionary<ICellType, int> _cellTypesByAmount = new Dictionary<ICellType, int>();
     private int _layoutCellsAmount;
     private const int CELL_EDGES_FOR_SQUARE = 4;
-    private const int CELL_EDGES_FOR_OCTAGONE = 8;
 
     public LayoutFiller(int mapHight, int mapWidth, string jsonRules)
     {
@@ -58,5 +57,43 @@ public class LayoutFiller
                 }
             }
         }
+    }
+    
+    public void AssignTypesToCell()
+    {
+        Random random = new Random();
+        bool needChangeCellType = false;
+
+        foreach (var cellType in _cellTypesByAmount)
+        {
+            int cellTypeAmount = cellType.Value;
+
+            for (int i = 0; i < _layout.GetMapHight(); i++)
+            {
+                for (int j = 0; j < _layout.GetMapWidth(); j++)
+                {
+                    if (!_layout.GetCellByIndex(i + j).GetCellType().Equals(CellTypes.UnassinedCellType))
+                    {
+                        continue;
+                    }
+                    _layout.GetCellByIndex(i + j).SetCellType(cellType.Key);
+                    cellTypeAmount--;
+                    if (random.Next(0, 2) == 1 || cellTypeAmount == 0)
+                    {
+                        needChangeCellType = true;
+                        _cellTypesByAmount[cellType.Key] = cellTypeAmount;
+                        break;
+                    }
+                }
+                if (needChangeCellType)
+                {
+                    break;
+                }
+            }
+            if (needChangeCellType)
+            {
+                continue;
+            }
+        }        
     }
 }
