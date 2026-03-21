@@ -3,15 +3,14 @@ namespace MapLayoutGenerator;
 public class LayoutFiller
 {
     private Layout _layout;
-    private Dictionary<ICellType, int> _cellTypesByAmount = new Dictionary<ICellType, int>();
+    private Dictionary<CellType, int> _cellTypesByAmount = new Dictionary<CellType, int>();
     private int _layoutCellsAmount;
     private const int CELL_EDGES_FOR_SQUARE = 4;
 
-    public LayoutFiller(int mapHight, int mapWidth, string jsonRules)
+    public LayoutFiller(Layout layout, Dictionary<CellType, int> cellTypesByAmount)
     {
-        _layout = new Layout(mapHight, mapWidth);
-        var deserialiser = new JSONToCellTypeDictionaryDeserialiser();
-        _cellTypesByAmount = deserialiser.DeserialiseJSONRulesToCellTypeDictionary(jsonRules);
+        _layout = layout;
+        _cellTypesByAmount = cellTypesByAmount;
         _layoutCellsAmount = _layout.GetMapHight() * _layout.GetMapWidth();
     }
 

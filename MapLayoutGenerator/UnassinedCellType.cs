@@ -1,13 +1,13 @@
 namespace MapLayoutGenerator;
 
-public class UnassinedCellType : ICellType
+public class UnassinedCellType : CellType
 {
-    public Enum GetCellType()
+    public UnassinedCellType()
     {
-        return CellTypes.UnassinedCellType;
+        EnumCellType = CellTypes.UnassinedCellType;
     }
 
-    public bool CellTypeIsCompatable(ICellType otherCellType)
+    public override bool CellTypeIsCompatable(CellType otherCellType)
     {
         return false;
     }

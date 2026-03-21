@@ -4,12 +4,12 @@ namespace MapLayoutGenerator;
 
 public class JSONToCellTypeDictionaryDeserialiser
 {
-    public Dictionary<ICellType, int> DeserialiseJSONRulesToCellTypeDictionary(string jsonRules)
+    public Dictionary<string, int> DeserialiseJSONRulesToCellTypeDictionary(string jsonRules)
     {
         if (jsonRules is not null)
         {
-            var deserialized = JsonSerializer.Deserialize<Dictionary<ICellType, int>>(jsonRules);
-            Dictionary<ICellType, int> cellTypesByAmount = new Dictionary<ICellType, int>();
+            var deserialized = JsonSerializer.Deserialize<Dictionary<string, int>>(jsonRules);
+            Dictionary<string, int> cellTypesByAmount = new Dictionary<string, int>();
             if (deserialized is not null)
             {
                 cellTypesByAmount = deserialized;

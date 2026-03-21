@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\GeteratorsTests\\MapLayoutGenerator\\MapLayoutGenerator.csproj": {}
+    "e:\\GeteratorsTests\\MapLayoutGenerator\\MapLayoutGenerator.csproj": {}
   },
   "projects": {
-    "E:\\GeteratorsTests\\MapLayoutGenerator\\MapLayoutGenerator.csproj": {
+    "e:\\GeteratorsTests\\MapLayoutGenerator\\MapLayoutGenerator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GeteratorsTests\\MapLayoutGenerator\\MapLayoutGenerator.csproj",
+        "projectUniqueName": "e:\\GeteratorsTests\\MapLayoutGenerator\\MapLayoutGenerator.csproj",
         "projectName": "MapLayoutGenerator",
-        "projectPath": "E:\\GeteratorsTests\\MapLayoutGenerator\\MapLayoutGenerator.csproj",
+        "projectPath": "e:\\GeteratorsTests\\MapLayoutGenerator\\MapLayoutGenerator.csproj",
         "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "E:\\GeteratorsTests\\MapLayoutGenerator\\obj\\",
+        "outputPath": "e:\\GeteratorsTests\\MapLayoutGenerator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config"

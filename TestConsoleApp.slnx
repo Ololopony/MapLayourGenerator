@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="MapLayoutGenerator/MapLayoutGenerator.csproj" />
+  <Project Path="TestIntegrationConsoleApp/TestIntegrationConsoleApp.csproj" />
 </Solution>
