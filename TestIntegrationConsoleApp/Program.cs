@@ -42,7 +42,7 @@ class Program
         {
             for (int j = 0; j < layout.GetMapWidth(); j++)
             {
-                switch (layout.GetCellByIndex(j + i * layout.GetMapHight()).GetCellType())
+                switch (layout.GetCellByIndex(j + i * layout.GetMapHight()).GetCellType().EnumCellType)
                 {
                     case CellTypes.Forest:
                         Console.Write("F");
@@ -60,9 +60,5 @@ class Program
             }
             Console.WriteLine("");
         }
-        // foreach (var cell in layout._cells)
-        // {
-        //     Console.WriteLine(cell.GetCellType());
-        // }
     }
 }

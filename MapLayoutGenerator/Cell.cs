@@ -12,9 +12,9 @@ public class Cell
         _maxNeighbouringCells = cellEdgesNumber;
     }
 
-    public Enum GetCellType()
+    public CellType GetCellType()
     {
-        return _cellType.EnumCellType;
+        return _cellType;
     }
 
     public void SetCellType(CellType cellType)

@@ -75,7 +75,7 @@ public class LayoutFiller
                     {
                         for (int j = 0; j < _layout.GetMapWidth(); j++)
                         {
-                            if (!_layout.GetCellByIndex(i + j * _layout.GetMapHight()).GetCellType().Equals(CellTypes.UnassinedCellType))
+                            if (!_layout.GetCellByIndex(i + j * _layout.GetMapHight()).GetCellType().EnumCellType.Equals(CellTypes.UnassinedCellType))
                             {
                                 continue;
                             }
@@ -83,7 +83,6 @@ public class LayoutFiller
                             cellTypeAmount--;
                             cellTypeLeft--;
                             if (random.Next(0, 2) == 1 || cellTypeAmount == 0)
-                            // if (cellTypeAmount == 0)
                             {
                                 needChangeCellType = true;
                                 _cellTypesByAmount[cellType.Key] = cellTypeAmount;
