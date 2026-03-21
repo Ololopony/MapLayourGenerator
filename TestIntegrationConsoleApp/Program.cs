@@ -10,9 +10,9 @@ class Program
         string json = 
         """
             {
-                "mountains":3,
-                "forests":3,
-                "lakes":3
+                "mountains":1,
+                "lakes":1,
+                "forests":7
             }
         """;
         JSONToCellTypeDictionaryDeserialiser des = new JSONToCellTypeDictionaryDeserialiser();
@@ -42,7 +42,7 @@ class Program
         {
             for (int j = 0; j < layout.GetMapWidth(); j++)
             {
-                switch (layout.GetCellByIndex(j + i * layout.GetMapHight()).GetCellType().EnumCellType)
+                switch (layout.GetCellByIndex(i, j).GetCellType().EnumCellType)
                 {
                     case CellTypes.Forest:
                         Console.Write("F");

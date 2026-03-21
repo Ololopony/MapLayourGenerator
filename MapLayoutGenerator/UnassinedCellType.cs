@@ -9,6 +9,6 @@ public class UnassinedCellType : CellType
 
     public override bool CellTypeIsCompatable(CellType otherCellType)
     {
-        return false;
+        return true;
     }
 }

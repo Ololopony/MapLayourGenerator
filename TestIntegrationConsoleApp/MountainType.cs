@@ -12,6 +12,13 @@ public class MountainType : CellType
 
     public override bool CellTypeIsCompatable(CellType otherCellType)
     {
-        return true;
+        if (otherCellType.EnumCellType.Equals(CellTypes.Lake))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }

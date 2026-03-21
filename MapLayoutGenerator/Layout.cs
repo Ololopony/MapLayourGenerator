@@ -30,8 +30,9 @@ public class Layout
         }
     }
 
-    public Cell GetCellByIndex(int index)
+    public Cell GetCellByIndex(int i, int j)
     {
-        return _cells[index];
+        int realIndex = i * _mapHight + j;
+        return _cells[realIndex];
     }
 }

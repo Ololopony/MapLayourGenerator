@@ -12,6 +12,18 @@ public class Cell
         _maxNeighbouringCells = cellEdgesNumber;
     }
 
+    public bool TypeCompatableWithNeighbour(CellType cellType)
+    {
+        foreach (var neighbouringCell in _neighbouringCells)
+        {
+            if (!neighbouringCell.Value.GetCellType().CellTypeIsCompatable(cellType))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public CellType GetCellType()
     {
         return _cellType;

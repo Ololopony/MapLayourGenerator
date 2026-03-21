@@ -32,27 +32,27 @@ public class LayoutFiller
         {
             for (int j = 0; j < _layout.GetMapWidth(); j++)
             {
-                Cell currentCell = _layout.GetCellByIndex(j + i * _layout.GetMapHight());
-                int downCellIndex = j + _layout.GetMapWidth() + i * _layout.GetMapHight();
-                int upCellIndex = j - _layout.GetMapWidth() + i * _layout.GetMapHight();
-                int rightCellIndex = j + 1 + i * _layout.GetMapHight();
-                int leftCellIndex = j - 1 + i * _layout.GetMapHight();
+                Cell currentCell = _layout.GetCellByIndex(i, j);
+                int downCellIndex = i + 1;
+                int upCellIndex = i - 1;
+                int rightCellIndex = j + 1;
+                int leftCellIndex = j - 1;
 
-                if (downCellIndex < _layoutCellsAmount)
+                if (downCellIndex < _layout.GetMapHight())
                 {
-                    currentCell.AssignNewNeighbourCellByDirection(RelativeDirection.Down, _layout.GetCellByIndex(downCellIndex));
+                    currentCell.AssignNewNeighbourCellByDirection(RelativeDirection.Down, _layout.GetCellByIndex(i + 1, j));
                 }
-                if (upCellIndex > 0)
+                if (upCellIndex >= 0)
                 {
-                    currentCell.AssignNewNeighbourCellByDirection(RelativeDirection.Up, _layout.GetCellByIndex(upCellIndex));
+                    currentCell.AssignNewNeighbourCellByDirection(RelativeDirection.Up, _layout.GetCellByIndex(i - 1, j));
                 }
                 if (rightCellIndex < _layout.GetMapWidth())
                 {
-                    currentCell.AssignNewNeighbourCellByDirection(RelativeDirection.Right, _layout.GetCellByIndex(rightCellIndex));
+                    currentCell.AssignNewNeighbourCellByDirection(RelativeDirection.Right, _layout.GetCellByIndex(i, j + 1));
                 }
-                if (leftCellIndex > 0)
+                if (leftCellIndex >= 0)
                 {
-                    currentCell.AssignNewNeighbourCellByDirection(RelativeDirection.Left, _layout.GetCellByIndex(leftCellIndex));
+                    currentCell.AssignNewNeighbourCellByDirection(RelativeDirection.Left, _layout.GetCellByIndex(i, j - 1));
                 }
             }
         }
@@ -75,13 +75,23 @@ public class LayoutFiller
                     {
                         for (int j = 0; j < _layout.GetMapWidth(); j++)
                         {
-                            if (!_layout.GetCellByIndex(i + j * _layout.GetMapHight()).GetCellType().EnumCellType.Equals(CellTypes.UnassinedCellType))
+                            Cell currentCell = _layout.GetCellByIndex(i, j);
+                            if (!currentCell.GetCellType().EnumCellType.Equals(CellTypes.UnassinedCellType))
                             {
                                 continue;
                             }
-                            _layout.GetCellByIndex(i + j * _layout.GetMapHight()).SetCellType(cellType.Key);
-                            cellTypeAmount--;
-                            cellTypeLeft--;
+                            if (currentCell.TypeCompatableWithNeighbour(cellType.Key))
+                            {
+                                currentCell.SetCellType(cellType.Key);
+                                cellTypeAmount--;
+                                cellTypeLeft--;
+                            }
+                            else
+                            {
+                                needChangeCellType = true;
+                                _cellTypesByAmount[cellType.Key] = cellTypeAmount;
+                                break;
+                            }
                             if (random.Next(0, 2) == 1 || cellTypeAmount == 0)
                             {
                                 needChangeCellType = true;
