@@ -6,13 +6,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        Layout layout = new Layout(10, 10);
+        Layout layout = new Layout(3, 3);
         string json = 
         """
             {
-                "mountains":20,
-                "forests":50,
-                "lakes":30
+                "mountains":3,
+                "forests":3,
+                "lakes":3
             }
         """;
         JSONToCellTypeDictionaryDeserialiser des = new JSONToCellTypeDictionaryDeserialiser();
@@ -33,11 +33,36 @@ class Program
                     continue;
             }
         }
-        foreach (var type in typesDictionary)
+        LayoutFiller layoutFiller = new LayoutFiller(layout, typesDictionary);
+        layoutFiller.FillLayoutWithEmptyCells();
+        layoutFiller.AssignNewNeighbourCells();
+        layoutFiller.AssignTypesToCell();
+
+        for (int i = 0; i < layout.GetMapHight(); i++)
         {
-            Console.WriteLine(type.Key);
-            Console.WriteLine(type.Key.CellTypeIsCompatable(new MountainType()));
-            Console.WriteLine(type.Value);
+            for (int j = 0; j < layout.GetMapWidth(); j++)
+            {
+                switch (layout.GetCellByIndex(j + i * layout.GetMapHight()).GetCellType())
+                {
+                    case CellTypes.Forest:
+                        Console.Write("F");
+                        continue;
+                    case CellTypes.Lake:
+                        Console.Write("L");
+                        continue;
+                    case CellTypes.Mountain:
+                        Console.Write("M");
+                        continue;
+                    default:
+                        Console.Write("D");
+                        continue;
+                }
+            }
+            Console.WriteLine("");
         }
+        // foreach (var cell in layout._cells)
+        // {
+        //     Console.WriteLine(cell.GetCellType());
+        // }
     }
 }

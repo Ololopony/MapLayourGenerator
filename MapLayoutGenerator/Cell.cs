@@ -22,7 +22,7 @@ public class Cell
         _cellType = cellType;
     }
 
-    public void AssignNewNeighbourCellByDirection(Cell newCell, RelativeDirection relativeDirection)
+    public void AssignNewNeighbourCellByDirection(RelativeDirection relativeDirection, Cell newCell)
     {
         if (_neighbouringCells.Count < _maxNeighbouringCells)
         {
